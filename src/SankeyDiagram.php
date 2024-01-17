@@ -10,8 +10,10 @@ namespace BeastBytes\Mermaid\SankeyDiagram;
 
 use BeastBytes\Mermaid\CommentTrait;
 use BeastBytes\Mermaid\Mermaid;
+use BeastBytes\Mermaid\MermaidInterface;
+use Stringable;
 
-class SankeyDiagram
+class SankeyDiagram implements MermaidInterface, Stringable
 {
     use CommentTrait;
 
@@ -19,6 +21,11 @@ class SankeyDiagram
 
     /** @psalm-param list<array{string, string, float}> $datasets */
     private array $datasets = [];
+
+    public function __toString(): string
+    {
+        return $this->render();
+    }
 
     /**
      * @psalm-param array{string, string, float} ...$dataset
