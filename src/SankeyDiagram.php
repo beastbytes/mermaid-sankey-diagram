@@ -51,7 +51,7 @@ class SankeyDiagram implements MermaidInterface, Stringable
         return $new;
     }
 
-    public function render(): string
+    public function render(array $attributes = []): string
     {
         $output = [];
 
@@ -69,6 +69,6 @@ class SankeyDiagram implements MermaidInterface, Stringable
             ;
         }
 
-        return Mermaid::render($output);
+        return Mermaid::render($output, $attributes);
     }
 }
